@@ -18,11 +18,11 @@ public class PayrollBlueprint {
         this.payRate = payRate;
     }
 
-    //Create a custom method
-
-
-
-
+//Create a custom method gross pay calculate the pay based on the hour worked.
+   public double getGrossPay(){
+    return this.getHoursWorked() * this.getPayRate();
+   }
+//********************************************
     public int getId() {
         return id;
     }
