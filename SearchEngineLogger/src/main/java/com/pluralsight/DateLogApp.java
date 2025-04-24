@@ -15,7 +15,7 @@ public class DateLogApp {
 
     public static void main(String[] args) {
         //invoke the log action that take the actual value argument
-        logAction("Launch");
+        logAction("  Launch");
 
         // Variable for setting the condition of the loop for the questions til decided to exit.
         boolean appRunning = true;
@@ -48,7 +48,7 @@ public class DateLogApp {
         //allow us to try and write to the file
         try {
             //we need this to write to file
-            //path where I want my file to be and ture is to append to the file not to overwrite to the file
+            //path where I want my file to be and ture is to append(make sure the previous instance stay) to the file not to overwrite to the file
             FileWriter myLogFile = new FileWriter("src/main/resources/logs.txt", true);//working with the file that doesn't exist
             //buffer gives us the ability to write to the myLogfile and more efficient
             BufferedWriter myBufferFile = new BufferedWriter(myLogFile);//allow us to pass content
@@ -58,7 +58,7 @@ public class DateLogApp {
             //creating /write our file/to the file and passed the format to our local date with space and passed the placeholder / parameter).
             myBufferFile.write(myTimeStamp.format(myTimeStampFormatter) + "" + theAction);
 
-            //log it from top to bottom not left to right and need to close the buffer.. if we want to write to the file we need to close the file
+            //log it from top to bottom not left to right and need to close the buffer.If we want to write to the file we need to close the file
             myBufferFile.newLine();//make sure we have a new line in our file
             myBufferFile.close();
 

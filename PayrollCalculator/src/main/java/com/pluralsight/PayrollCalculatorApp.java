@@ -18,16 +18,39 @@ public class PayrollCalculatorApp {
 //            String outputFile = "payroll-April-2025.csv";
 
             //Prompt the user for input file name
-            System.out.println("Enter the name of the file employee file to process (e.g., employees.csv):");
-            String theEmployeesFile = myScanner.nextLine().trim();
+//            System.out.println("Enter the name of the file employee file to process (e.g., employees.csv):");
+//            String theEmployeesFile = myScanner.nextLine().trim();
             //if(theEmployeesFile.isEmpty())will do condition to create a validation
             //And to ask again by loop instead exiting the app.
+            // Keep asking for valid employee file until found
+            String theEmployeesFile = "";
+            while (true) {
+                System.out.print("Enter the name of the employee file to process (e.g., employees.csv): ");
+                theEmployeesFile = myScanner.nextLine().trim();
 
+
+                if (!theEmployeesFile.exists() && theEmployeesFile.isFile()) {
+                    break;
+                } else {
+                    System.out.println("File not found! Please check the name and try again.\n");
+                }
+            }
             // Prompt the user for output file name
-            System.out.print("Enter the name of the payroll file to create (e.g., payroll-April-2025.csv):\n ");
-            String outputFile = myScanner.nextLine().trim();
+           // System.out.print("Enter the name of the payroll file to create (e.g., payroll-April-2025.csv):\n ");
+          //String outputFile = myScanner.nextLine().trim();
 
-            FileReader employeesFile = new FileReader("src/main/resources/" + theEmployeesFile);
+            String outputFile = "";
+            while (true) {
+                System.out.print("Enter the name of the payroll file to create (e.g., payroll-April-2025.csv): ");
+                outputFile = myScanner.nextLine().trim();
+                if (!outputFile.isEmpty() && outputFile.endsWith(".csv")) {
+                    break;
+                } else {
+                    System.out.println("Invalid file name. Make sure it ends with '.csv' and isn't empty.\n");
+                }
+            }
+
+           FileReader employeesFile = new FileReader("src/main/resources/" + theEmployeesFile);
             BufferedReader bufferedFile = new BufferedReader(employeesFile);
 
             // create a BufferedWrite
