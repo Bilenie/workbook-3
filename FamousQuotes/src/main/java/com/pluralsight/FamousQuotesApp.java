@@ -6,7 +6,7 @@ public class FamousQuotesApp {
     static Scanner myScanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        //Creat a list that contain bible verses/quotes
+        //Create a list that contain bible verses/quotes
         String[] quotes = {
                 "I can do all things through Christ who strengthens me=>Philippians 4:13",
 
@@ -46,7 +46,6 @@ public class FamousQuotesApp {
                 myScanner.nextLine(); // Clear the invalid input
                 continue;
             }
-
             myScanner.nextLine();// eat the line because we are going to transition from int to str
 
             //this repeat every step if the user select y
