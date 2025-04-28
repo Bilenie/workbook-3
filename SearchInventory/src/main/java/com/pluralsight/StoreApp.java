@@ -16,21 +16,19 @@ public class StoreApp {
         System.out.println("We carry the following inventory: ");
         for (int i = 0; i < inventory.size(); i++) {
             Product p = inventory.get(i);
-            System.out.printf("id: %d %s - Price: $%.2f",
+            System.out.printf("id: %d %s - Price: $%.2f%n",
                     p.getId(), p.getName(), p.getPrice());
-
         }
     }
-
     public static ArrayList<Product> getInventory() {
         //we're creating a new object called inventory that will contain a list of products.
-        ArrayList<Product> inventory = new ArrayList<Product>();
+        ArrayList<Product> inventory = new ArrayList<>();
+        //String[] cheese = {"pig", "dog", "cat"};
 
         // this method loads product objects into inventory
         // and its details are not shown= we're also instantiating an object called product.
         //we add these products to the inventory list.
         //add that product to the inventory array list using inventory.add
-
 
         try {
             //open csv file
@@ -57,13 +55,12 @@ public class StoreApp {
 
                 Product inventoryProduct = new Product(id, name, price);
                 inventory.add(inventoryProduct);
-
             }
             //Close the buffer.
             myBufferInventoryFile.close();
 
         } catch (Exception e) {
-            System.out.println("Error reading inventory file." + e.getMessage());
+            System.out.print("Error reading inventory file." + e.getMessage());
         }
 
         return inventory;
