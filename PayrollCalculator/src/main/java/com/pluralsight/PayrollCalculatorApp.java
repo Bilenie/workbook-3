@@ -9,36 +9,23 @@ import java.util.Scanner;
 public class PayrollCalculatorApp {
     static Scanner myScanner = new Scanner (System.in);
     public static void main(String[] args) {
-        //we need to read .csv file
-        //generate payroll info for each employee.
-        //use BufferedReader
+        String employeesFile = "src/main/resources/employees.csv";
         try {
-            //we create a file reader to be able to read from the employees file= the scanner add
-//            String theEmployeesFile = "employees.csv";
-//            String outputFile = "payroll-April-2025.csv";
-
-            //Prompt the user for input file name
-//            System.out.println("Enter the name of the file employee file to process (e.g., employees.csv):");
-//            String theEmployeesFile = myScanner.nextLine().trim();
-            //if(theEmployeesFile.isEmpty())will do condition to create a validation
-            //And to ask again by loop instead exiting the app.
+            //Prompt the user for input file name and to ask again by loop instead exiting the app.
             // Keep asking for valid employee file until found
             String theEmployeesFile = "";
             while (true) {
-                System.out.print("Enter the name of the employee file to process (e.g., employees.csv): ");
+                System.out.print("Enter the name of the employee file to process (e.g., employees.csv):\n ");
                 theEmployeesFile = myScanner.nextLine().trim();
 
-
-                if (!theEmployeesFile.exists() && theEmployeesFile.isFile()) {
+                if (theEmployeesFile.equalsIgnoreCase("employees.csv")) {
                     break;
                 } else {
                     System.out.println("File not found! Please check the name and try again.\n");
                 }
             }
             // Prompt the user for output file name
-           // System.out.print("Enter the name of the payroll file to create (e.g., payroll-April-2025.csv):\n ");
-          //String outputFile = myScanner.nextLine().trim();
-
+            // Keep asking for valid employee file until provided with the correct file name.
             String outputFile = "";
             while (true) {
                 System.out.print("Enter the name of the payroll file to create (e.g., payroll-April-2025.csv): ");
@@ -49,9 +36,8 @@ public class PayrollCalculatorApp {
                     System.out.println("Invalid file name. Make sure it ends with '.csv' and isn't empty.\n");
                 }
             }
-
-           FileReader employeesFile = new FileReader("src/main/resources/" + theEmployeesFile);
-            BufferedReader bufferedFile = new BufferedReader(employeesFile);
+            FileReader employeesFileRead = new FileReader(employeesFile);
+            BufferedReader bufferedFile = new BufferedReader(employeesFileRead);
 
             // create a BufferedWrite
             FileWriter fileWriter = new FileWriter("src/main/resources/" + outputFile);
@@ -62,9 +48,10 @@ public class PayrollCalculatorApp {
 
             //create a loop
             String theLine;
+            //read the file line by line if not empty
             while ((theLine = bufferedFile.readLine()) != null) {
                 String[] employeeDetailInfo = theLine.split("\\|");
-                //the same as using Reader.Readline
+            //if the line start with id skip
                 if (employeeDetailInfo[0].equalsIgnoreCase("id")) {
                     continue;
                 }
