@@ -39,12 +39,9 @@ public class DateLogApp {
         }
 
     }
-
     //Method that will create and maintain our log file => open a file, put something on the file,  produce a date stamp and take value and append.
     public static void logAction(String theAction) {
-
         //control statement when writing file we need try and catch/try and write to the file
-
         //allow us to try and write to the file
         try {
             //we need this to write to file
@@ -52,7 +49,6 @@ public class DateLogApp {
             FileWriter myLogFile = new FileWriter("src/main/resources/logs.txt", true);//working with the file that doesn't exist
             //buffer gives us the ability to write to the myLogfile and more efficient
             BufferedWriter myBufferFile = new BufferedWriter(myLogFile);//allow us to pass content
-
             //create the current date and time
             LocalDateTime myTimeStamp = LocalDateTime.now();
             //creating /write our file/to the file and passed the format to our local date with space and passed the placeholder / parameter).
